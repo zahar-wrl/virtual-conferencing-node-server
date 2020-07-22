@@ -7,10 +7,10 @@ const url = require('url');
 
 const port = parseInt(process.env.PORT, 10) || 3002;
 const dev = process.env.NODE_ENV !== 'production';
-const app = next({ dev });
-const handle = app.getRequestHandler();
+const server = next({ dev });
+const handle = server.getRequestHandler();
 
-app.prepare().then(() => {
+server.prepare().then(() => {
     const server = createServer((req, res) => {
         const parsedUrl = parse(req.url, true);
         const { pathname, query } = parsedUrl;
